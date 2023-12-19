@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.zain.rumahquranonline.ui.splashscreen.SplashScreen"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_loginFirebase"
+            app:destination="@id/loginFirebase" />
+        <action
+            android:id="@+id/action_splashScreen_to_homeAdmin"
+            app:destination="@id/homeAdmin" />
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.zain.rumahquranonline.ui.login.Login"
+        android:label="Login" >
+        <action
+            android:id="@+id/action_login_to_register"
+            app:destination="@id/register" />
+        <action
+            android:id="@+id/action_login_to_home2"
+            app:destination="@id/home2" />
+        <action
+            android:id="@+id/action_login_to_homeAdmin"
+            app:destination="@id/homeAdmin" />
+    </fragment>
+    <fragment
+        android:id="@+id/register"
+        android:name="com.zain.rumahquranonline.ui.register.Register"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_register_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.zain.rumahquranonline.ui.home.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home2_to_profile"
+            app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_home2_to_setoranHafalan"
+            app:destination="@id/setoranHafalan" />
+        <action
+            android:id="@+id/action_home2_to_sambungAyat"
+            app:destination="@id/sambungAyat" />
+        <action
+            android:id="@+id/action_home2_to_materi"
+            app:destination="@id/materi" />
+        <action
+            android:id="@+id/action_home2_to_adzan2"
+            app:destination="@id/adzan2" />
+        <action
+            android:id="@+id/action_home2_to_listCategoryUser"
+            app:destination="@id/listCategoryUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.zain.rumahquranonline.ui.Profile.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_to_loginFirebase"
+            app:destination="@id/loginFirebase" />
+    </fragment>
+    <fragment
+        android:id="@+id/sambungAyat"
+        android:name="com.zain.rumahquranonline.ui.sambungayat.SambungAyat"
+        android:label="fragment_sambung_ayat"
+        tools:layout="@layout/fragment_sambung_ayat" />
+    <fragment
+        android:id="@+id/setoranHafalan"
+        android:name="com.zain.rumahquranonline.ui.setoranhafalan.SetoranHafalan"
+        android:label="fragment_setoran_hafalan"
+        tools:layout="@layout/fragment_setoran_hafalan" />
+    <fragment
+        android:id="@+id/materi"
+        android:name="com.zain.rumahquranonline.ui.materi.Materi"
+        android:label="fragment_materi"
+        tools:layout="@layout/fragment_materi" >
+        <action
+            android:id="@+id/action_materi_to_nomorhadist"
+            app:destination="@id/nomorhadist" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailHadist"
+        android:name="com.zain.rumahquranonline.ui.materi.DetailHadist"
+        android:label="fragment_detail_hadist"
+        tools:layout="@layout/fragment_detail_hadist" />
+    <fragment
+        android:id="@+id/nomorhadist"
+        android:name="com.zain.rumahquranonline.ui.materi.Nomorhadist"
+        android:label="fragment_nomorhadist"
+        tools:layout="@layout/fragment_nomorhadist" >
+        <action
+            android:id="@+id/action_nomorhadist_to_detailHadist"
+            app:destination="@id/detailHadist" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFirebase"
+        android:name="com.zain.rumahquranonline.ui.loginFirebase.LoginFirebase"
+        android:label="fragment_login_firebase"
+        tools:layout="@layout/fragment_login_firebase" >
+        <action
+            android:id="@+id/action_loginFirebase_to_home2"
+            app:destination="@id/home2" />
+        <action
+            android:id="@+id/action_loginFirebase_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeAdmin"
+        android:name="com.zain.rumahquranonline.ui.homeAdmin.HomeAdmin"
+        android:label="HomeAdmin" >
+        <action
+            android:id="@+id/action_homeAdmin_to_materiAdmin"
+            app:destination="@id/materiAdmin" />
+        <action
+            android:id="@+id/action_homeAdmin_to_listBukuMateriAdmin"
+            app:destination="@id/listBukuMateriAdmin" />
+        <action
+            android:id="@+id/action_homeAdmin_to_uploadMateri"
+            app:destination="@id/uploadMateri" />
+    </fragment>
+    <fragment
+        android:id="@+id/materiAdmin"
+        android:name="com.zain.rumahquranonline.ui.materiAdmin.MateriAdmin"
+        android:label="fragment_materi_admin"
+        tools:layout="@layout/fragment_materi_admin" />
+    <fragment
+        android:id="@+id/adzan2"
+        android:name="com.zain.rumahquranonline.ui.adzan.Adzan"
+        android:label="fragment_adzan"
+        tools:layout="@layout/fragment_adzan" />
+    <fragment
+        android:id="@+id/listBukuMateriAdmin"
+        android:name="com.zain.rumahquranonline.ui.materiAdmin.ListBukuMateriAdmin"
+        android:label="fragment_list_buku_materi_admin"
+        tools:layout="@layout/fragment_list_buku_materi_admin" >
+        <action
+            android:id="@+id/action_listBukuMateriAdmin_to_listPdf"
+            app:destination="@id/listPdf" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadMateri"
+        android:name="com.zain.rumahquranonline.ui.materiAdmin.UploadMateri"
+        android:label="fragment_upload_materi"
+        tools:layout="@layout/fragment_upload_materi" />
+    <fragment
+        android:id="@+id/listPdf"
+        android:name="com.zain.rumahquranonline.ui.materi.ListPdf"
+        android:label="fragment_list_pdf"
+        tools:layout="@layout/fragment_list_pdf" >
+        <action
+            android:id="@+id/action_listPdf_to_editPdf"
+            app:destination="@id/editPdf" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPdf"
+        android:name="com.zain.rumahquranonline.ui.materi.EditPdf"
+        android:label="fragment_edit_pdf"
+        tools:layout="@layout/fragment_edit_pdf" />
+    <fragment
+        android:id="@+id/listCategoryUser"
+        android:name="com.zain.rumahquranonline.ui.materiAdmin.ListCategoryUser"
+        android:label="ListCategoryUser" >
+        <action
+            android:id="@+id/action_listCategoryUser_to_listPdf"
+            app:destination="@id/listPdf" />
+        <action
+            android:id="@+id/action_listCategoryUser_to_listPdfUser"
+            app:destination="@id/listPdfUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/listPdfUser"
+        android:name="com.zain.rumahquranonline.ui.materi.ListPdfUser"
+        android:label="fragment_list_pdf_user"
+        tools:layout="@layout/fragment_list_pdf_user" >
+        <action
+            android:id="@+id/action_listPdfUser_to_bacaMateri"
+            app:destination="@id/bacaMateri" />
+    </fragment>
+    <fragment
+        android:id="@+id/bacaMateri"
+        android:name="com.zain.rumahquranonline.ui.materi.BacaMateri"
+        android:label="fragment_baca_materi"
+        tools:layout="@layout/fragment_baca_materi" />
+</navigation>

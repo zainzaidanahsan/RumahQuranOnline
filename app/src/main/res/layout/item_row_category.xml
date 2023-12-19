@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:backgroundTint="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="10dp"
+    android:elevation="0dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:fontFamily="@font/inter_bold"
+        android:textColor="@color/black"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="15dp"
+        android:id="@+id/txt_category"
+        android:textSize="20sp"
+        android:text="Akidah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/deleteCat"
+        android:padding="10dp"
+        android:layout_gravity="center_vertical|end"
+        android:src="@drawable/baseline_delete_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "162079111411",
+    "project_id": "qurancall-d972b",
+    "storage_bucket": "qurancall-d972b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162079111411:android:d067741a5648fb50e61f86",
+        "android_client_info": {
+          "package_name": "com.zain.rumahquranonline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162079111411-24prscquk83mtofld9b6f4uqdaqb7vqi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zain.rumahquranonline",
+            "certificate_hash": "ffb70a76b657920edcfe438cf79f90a4b8690f42"
+          }
+        },
+        {
+          "client_id": "162079111411-gritftvmbfgmri1re491q4jetqjgur72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSz-ySx4dq5jrNbdGEnFNdAq3It2phoAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162079111411-gritftvmbfgmri1re491q4jetqjgur72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

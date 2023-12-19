@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">RumahQuranOnline</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="daftar">Daftar</string>
+    <string name="WelcomeLogin">Assalamu’alaikum. Silakan daftarkan informasi Anda untuk mengakses akun Anda.</string>
+    <string name="kata_login">Assalamu’alaikum. Silakan masukkan informasi data Anda untuk mengakses akun Anda.</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="masuk">Masuk</string>
+    <string name="login">Login</string>
+    <string name="daftar_disini">daftar disini</string>
+    <string name="belum_punya_akun">Belum punya akun,</string>
+    <string name="atau_masuk_dengan">atau masuk dengan</string>
+    <string name="username">Username</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="home">Home</string>
+    <string name="kirim_pesan">Kirim Pesan</string>
+    <string name="nama_user">Nama User</string>
+    <string name="email_user">Email@user.com</string>
 </resources>

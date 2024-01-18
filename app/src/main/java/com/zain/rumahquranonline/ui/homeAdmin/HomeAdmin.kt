@@ -54,6 +54,9 @@ class HomeAdmin : Fragment() {
         binding.cvMenu5.setOnClickListener{
             findNavController().navigate(R.id.action_homeAdmin_to_uploadMateri)
         }
+        binding.cvMenu3.setOnClickListener {
+            findNavController().navigate(R.id.action_homeAdmin_to_createSchedule)
+        }
 
     }
 

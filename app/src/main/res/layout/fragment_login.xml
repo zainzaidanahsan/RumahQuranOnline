@@ -88,12 +88,13 @@
             android:text="@string/masuk"/>
 
         <TextView
+            android:id="@+id/lupaPassword"
             android:padding="10dp"
             android:fontFamily="@font/inter_regular"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/atau_masuk_dengan"
+            android:text="Lupa Password"
             />
 
 <!--        <androidx.cardview.widget.CardView-->

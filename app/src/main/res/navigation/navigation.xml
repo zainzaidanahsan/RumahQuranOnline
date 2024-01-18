@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_login_to_homeAdmin"
             app:destination="@id/homeAdmin" />
+        <action
+            android:id="@+id/action_login_to_lupaPassword2"
+            app:destination="@id/lupaPassword2" />
     </fragment>
     <fragment
         android:id="@+id/register"
@@ -63,6 +66,12 @@
         <action
             android:id="@+id/action_home2_to_listCategoryUser"
             app:destination="@id/listCategoryUser" />
+        <action
+            android:id="@+id/action_home2_to_fragmentSettings"
+            app:destination="@id/fragmentSettings" />
+        <action
+            android:id="@+id/action_home2_to_pertanyaan"
+            app:destination="@id/pertanyaan" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -72,6 +81,9 @@
         <action
             android:id="@+id/action_profile_to_loginFirebase"
             app:destination="@id/loginFirebase" />
+        <action
+            android:id="@+id/action_profile_to_editProfile"
+            app:destination="@id/editProfile" />
     </fragment>
     <fragment
         android:id="@+id/sambungAyat"
@@ -82,7 +94,11 @@
         android:id="@+id/setoranHafalan"
         android:name="com.zain.rumahquranonline.ui.setoranhafalan.SetoranHafalan"
         android:label="fragment_setoran_hafalan"
-        tools:layout="@layout/fragment_setoran_hafalan" />
+        tools:layout="@layout/fragment_setoran_hafalan" >
+        <action
+            android:id="@+id/action_setoranHafalan_to_chat"
+            app:destination="@id/chat" />
+    </fragment>
     <fragment
         android:id="@+id/materi"
         android:name="com.zain.rumahquranonline.ui.materi.Materi"
@@ -131,6 +147,9 @@
         <action
             android:id="@+id/action_homeAdmin_to_uploadMateri"
             app:destination="@id/uploadMateri" />
+        <action
+            android:id="@+id/action_homeAdmin_to_createSchedule"
+            app:destination="@id/createSchedule" />
     </fragment>
     <fragment
         android:id="@+id/materiAdmin"
@@ -195,4 +214,36 @@
         android:name="com.zain.rumahquranonline.ui.materi.BacaMateri"
         android:label="fragment_baca_materi"
         tools:layout="@layout/fragment_baca_materi" />
+    <fragment
+        android:id="@+id/fragmentSettings"
+        android:name="com.zain.rumahquranonline.ui.Settings.FragmentSettings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_fragmentSettings_to_profile"
+            app:destination="@id/profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfile"
+        android:name="com.zain.rumahquranonline.ui.Profile.EditProfile"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/lupaPassword2"
+        android:name="com.zain.rumahquranonline.ui.login.LupaPassword"
+        android:label="fragment_lupa_password"
+        tools:layout="@layout/fragment_lupa_password" />
+    <fragment
+        android:id="@+id/createSchedule"
+        android:name="com.zain.rumahquranonline.ui.schedule.CreateSchedule"
+        android:label="fragment_create_schedule"
+        tools:layout="@layout/fragment_create_schedule" />
+    <fragment
+        android:id="@+id/chat"
+        android:name="com.zain.rumahquranonline.ui.setoranhafalan.Chat"
+        android:label="Chat" />
+    <fragment
+        android:id="@+id/pertanyaan"
+        android:name="com.zain.rumahquranonline.ui.sambungayat.Pertanyaan"
+        android:label="Pertanyaan" />
 </navigation>

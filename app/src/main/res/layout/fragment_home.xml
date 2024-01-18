@@ -8,8 +8,8 @@
     tools:context=".ui.home.Home">
 
     <ImageView
-        android:id="@+id/profile"
-        android:src="@drawable/baseline_account_circle_24"
+        android:id="@+id/settings"
+        android:src="@drawable/baseline_settings_24"
         android:layout_centerHorizontal="true"
         android:layout_toEndOf="@id/homeClockTextView"
         android:layout_marginStart="70dp"

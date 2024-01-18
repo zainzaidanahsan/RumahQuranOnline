@@ -48,13 +48,13 @@ class Home : Fragment() {
             findNavController().navigate(R.id.action_home2_to_listCategoryUser)
         }
         binding.cvMenu1.setOnClickListener(){
-            findNavController().navigate(R.id.action_home2_to_sambungAyat)
+            findNavController().navigate(R.id.action_home2_to_pertanyaan)
         }
         binding.cvMenu3.setOnClickListener {
             findNavController().navigate(R.id.action_home2_to_setoranHafalan)
         }
-        binding.profile.setOnClickListener(){
-            findNavController().navigate(R.id.action_home2_to_profile)
+        binding.settings.setOnClickListener(){
+            findNavController().navigate(R.id.action_home2_to_fragmentSettings)
         }
     }
 

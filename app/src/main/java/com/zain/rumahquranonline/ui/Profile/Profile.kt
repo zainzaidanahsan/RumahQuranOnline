@@ -8,13 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.zain.rumahquranonline.R
+import com.zain.rumahquranonline.constan.MyApplication
 import com.zain.rumahquranonline.databinding.FragmentLoginFirebaseBinding
 import com.zain.rumahquranonline.databinding.FragmentProfileBinding
 
 class Profile : Fragment() {
-
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
@@ -35,6 +40,15 @@ class Profile : Fragment() {
         binding.txtKeluar.setOnClickListener{
             signOut()
         }
+        loadUserInfo()
+
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        binding.cvEdit.setOnClickListener {
+            findNavController().navigate(R.id.action_profile_to_editProfile)
+
+        }
 
     }
 
@@ -43,6 +57,31 @@ class Profile : Fragment() {
         findNavController().navigate(R.id.action_profile_to_loginFirebase)
     }
 
+    private fun loadUserInfo(){
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
+        ref.child(auth.uid!!)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val email = "${snapshot.child("email").value}"
+                    val username = "${snapshot.child("username").value}"
+                    val imageProfile = "${snapshot.child("photoImage").value}"
+                    val timestamp ="${snapshot.child("timestamp").value}"
+                    val uid = "${snapshot.child("uid").value}"
+                    val userType = "${snapshot.child("userType").value}"
 
-
+                    binding.tvUsername.text = username
+                    binding.tvNameUser.text = username
+                    binding.tvEmailUser.text =  email
+                    try {
+                        Glide.with(requireActivity())
+                            .load(imageProfile)
+                            .placeholder(R.drawable.baseline_add_a_photo_24)
+                            .into(binding.addPhoto)
+                    }catch (e:Exception){
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+    }
 }

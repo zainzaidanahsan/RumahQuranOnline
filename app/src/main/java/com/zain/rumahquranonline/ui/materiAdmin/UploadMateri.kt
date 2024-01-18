@@ -67,7 +67,6 @@ class UploadMateri : Fragment() {
             pdfIntent()
         }
 
-
         binding.buttonUploadMateri.setOnClickListener {
             validateData()
         }
@@ -87,8 +86,6 @@ class UploadMateri : Fragment() {
         else{
             uploadPdftoStorage()
         }
-
-
     }
 
     private fun uploadPdftoStorage() {
@@ -113,7 +110,6 @@ class UploadMateri : Fragment() {
                 Log.d(TAG, "uploadPdftoStorage: gagal upload pdf ke storage karena ${e.message} ")
                 Toast.makeText(requireContext(), "Gagal mengupload ${e.message}", Toast.LENGTH_SHORT).show()
             }
-
     }
 
     private fun uploadPdfInfoToDn(uploadedPdfUrl:String, timestamp: Long) {
@@ -146,8 +142,6 @@ class UploadMateri : Fragment() {
                 progressDialog.dismiss()
                 Toast.makeText(requireContext(), "Gagal mengupload ${e.message}", Toast.LENGTH_SHORT).show()
             }
-
-
     }
 
     private var title = ""
@@ -197,12 +191,10 @@ class UploadMateri : Fragment() {
 
     private fun pdfIntent(){
         Log.d(TAG, "pdfIntent: Starting pick pdf intent")
-
         val intent = Intent()
         intent.type = "application/pdf"
         intent.action = Intent.ACTION_GET_CONTENT
         pdfresultLauncher.launch(intent)
-
     }
     val pdfresultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),

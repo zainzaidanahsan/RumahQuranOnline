@@ -1,98 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.setoranhafalan.SetoranHafalan">
-<TextView
-    android:id="@+id/txt_daftar_ustadz"
-    android:layout_marginStart="20dp"
-    android:layout_marginTop="20dp"
-    android:textColor="@color/primarycolour"
-    android:text="Daftar Ustadz"
-    android:fontFamily="@font/inter_bold"
-    android:textSize="30sp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
-    <androidx.cardview.widget.CardView
-        android:layout_below="@+id/txt_daftar_ustadz"
-        android:id="@+id/cv_ustadz"
-        android:backgroundTint="@color/green_light"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        app:cardCornerRadius="20dp"
-        android:layout_width="160dp"
-        android:layout_height="190dp">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal"
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:background="@android:color/transparent"
+            android:src="@drawable/baseline_arrow_back_ios_24"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:text="Pilih Jadwal"
+            android:textSize="18sp"
+            android:fontFamily="@font/inter_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvUstadz"
+        android:layout_width="167dp"
+        android:layout_height="167dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.120000005">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_gravity="center_horizontal"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="10dp"
-                android:id="@+id/uah"
-                android:src="@drawable/uah"
-                android:layout_width="100dp"
-                android:layout_height="100dp"/>
+                android:src="@drawable/uah" />
+
             <TextView
+                android:id="@+id/ustadzName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/inter_bold"
-                android:layout_gravity="center"
-                android:text="Ustadz Adi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:backgroundTint="@color/primarycolour"
-                android:id="@+id/btn_kirimpesan"
-                android:text="@string/kirim_pesan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:text="Ustadz Adi" />
         </LinearLayout>
-
-
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_below="@+id/txt_daftar_ustadz"
-        android:layout_toEndOf="@+id/cv_ustadz"
-        android:id="@+id/cv_ustadz2"
-        android:backgroundTint="@color/green_light"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        app:cardCornerRadius="20dp"
-        android:layout_width="160dp"
-        android:layout_height="190dp">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:id="@+id/uah2"
-                android:src="@drawable/uah"
-                android:layout_width="100dp"
-                android:layout_height="100dp"/>
-            <TextView
-                android:fontFamily="@font/inter_bold"
-                android:layout_gravity="center"
-                android:text="Ustadz Adi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:backgroundTint="@color/primarycolour"
-                android:id="@+id/btn_kirimpesan2"
-                android:text="@string/kirim_pesan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvJadwal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="234dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvUstadz" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/primarycolour"
+        android:text="Kirim Pesan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

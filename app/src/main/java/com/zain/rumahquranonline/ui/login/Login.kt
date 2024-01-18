@@ -50,8 +50,12 @@ class Login : Fragment() {
         binding.buttonLogin.setOnClickListener(){
             validateData()
         }
+        binding.lupaPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_login_to_lupaPassword2)
+        }
 
     }
+
 
     private var email = ""
     private var password = ""

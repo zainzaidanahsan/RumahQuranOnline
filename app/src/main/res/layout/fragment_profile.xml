@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".ui.Profile.Profile">
 
@@ -24,6 +25,7 @@
             android:layout_gravity="center_horizontal"
             android:text="Profile"
             android:textSize="18sp"
+            android:textColor="@color/black"
             android:fontFamily="@font/inter_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -32,7 +34,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_profile"
-        android:layout_width="350dp"
+        android:layout_width="330dp"
         android:layout_height="100dp"
         app:cardCornerRadius="12dp"
         android:elevation="12dp"
@@ -58,6 +60,7 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:text="@string/nama_user"
+            android:layout_marginStart="20dp"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:fontFamily="@font/inter_bold"
@@ -73,6 +76,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_bold"
         android:text="Biodata"
+        android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +87,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="350dp"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -99,6 +103,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/inter_regular"
             android:text="@string/username"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
         <TextView
@@ -107,6 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/inter_black"
+            android:textColor="@color/black"
             android:text="@string/nama_user"
             android:textSize="16sp" />
 
@@ -115,6 +121,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_regular"
             android:text="@string/email"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
         <TextView
@@ -123,6 +130,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_black"
             android:text="@string/email_user"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <androidx.cardview.widget.CardView

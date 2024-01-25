@@ -2,8 +2,9 @@
 <androidx.cardview.widget.CardView
     app:cardCornerRadius="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
+    android:layout_width="350dp"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
@@ -27,6 +28,14 @@
             android:fontFamily="@font/inter_bold"
             android:layout_below="@id/txtTanggal"
             android:layout_alignParentStart="true"/>
+        <TextView
+            android:id="@+id/txtUst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ini Ustadz"
+            android:fontFamily="@font/inter_bold"
+            android:layout_below="@id/txtSesi"
+            android:layout_alignParentStart="true"/>
 
         <ImageButton
             android:id="@+id/btnChat"
@@ -37,7 +46,7 @@
         android:padding="8dp"
         android:scaleType="centerInside"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/available"
+        android:src="@drawable/chat"
         android:contentDescription="@string/chat_button"/>
 
     </RelativeLayout>

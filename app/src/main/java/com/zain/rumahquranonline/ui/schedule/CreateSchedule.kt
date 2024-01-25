@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.zain.rumahquranonline.R
@@ -39,37 +40,57 @@ class CreateSchedule : Fragment() {
         progressDialog.setCanceledOnTouchOutside(false)
 
         setupButton()
-
-
-
     }
 
     private fun setupButton() {
         binding.scheduleButton.setOnClickListener {
             val selectedDate = "${binding.datePicker.dayOfMonth}/${binding.datePicker.month + 1}/${binding.datePicker.year}"
             val selectedSesi = binding.timeSpinner.selectedItem.toString()
+            val namaUstadz = binding.ustadzNameEditText.text.toString()
 
-            val newJadwal = Jadwal(selectedDate, selectedSesi)
-            saveJadwalToFirebase(newJadwal)
+            if (namaUstadz.isNotEmpty()) {
+                val newJadwal = Jadwal(selectedDate, selectedSesi, namaUstadz)
+                saveJadwalToFirebase(newJadwal)
+            } else {
+                Toast.makeText(context, "Masukkan nama ustadz", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     private fun saveJadwalToFirebase(jadwal: Jadwal) {
         progressDialog.setMessage("Membuat Jadwal...")
         progressDialog.show()
-        val key = database.child("jadwal").push().key
-        if (key != null){
-            database.child("jadwal").child(key).setValue(jadwal)
+        val jadwalRef = database.child("jadwal")
+        val key = jadwalRef.push().key
+        key?.let {
+            // Set ID jadwal
+            jadwal.id = key
+
+            jadwalRef.child(key).setValue(jadwal)
                 .addOnSuccessListener {
+                    createChatRoom(key)
                     progressDialog.dismiss()
-                    Utils.toast(requireContext(),"Jadwal Berhasil Dibuat.")
+                    Toast.makeText(context, "Jadwal Berhasil Dibuat.", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {
                     progressDialog.dismiss()
-                    Utils.toast(requireContext(),"Jadwal Gagal Dibuat karena ${it.message}")
+                    Toast.makeText(context, "Jadwal Gagal Dibuat karena ${it.message}", Toast.LENGTH_SHORT).show()
                 }
         }
     }
+
+    private fun createChatRoom(jadwalId: String) {
+        val chatRoomRef = database.child("chatRooms").child(jadwalId)
+        val chatRoom = HashMap<String, Any>()
+        chatRoom["id"] = jadwalId
+
+        chatRoomRef.setValue(chatRoom)
+            .addOnSuccessListener {
+                // Chat room berhasil dibuat
+            }
+            .addOnFailureListener {
+                // Gagal membuat chat room
+            }    }
 
     private fun setupSpinner() {
         ArrayAdapter.createFromResource(

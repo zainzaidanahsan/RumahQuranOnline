@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.zain.rumahquranonline.R
@@ -31,6 +34,8 @@ class Chat : Fragment() {
     private lateinit var db: FirebaseDatabase
     private lateinit var progressDialog: ProgressDialog
     private lateinit var adapter: ChatAdapter
+    private var jadwalId: String? = null
+
 
 
     override fun onCreateView(
@@ -45,42 +50,66 @@ class Chat : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = Firebase.auth
-        val firebaseUser = auth.currentUser
+        database = Firebase.database.reference
         db = Firebase.database
-        val messagesRef = db.reference.child(MESSAGES_CHILD)
+
+        jadwalId = arguments?.getString("jadwalId")
+
+//        if (jadwalId != null) {
+//            setupChatRoom(jadwalId!!)
+//        } else {
+//            Toast.makeText(context, "ID Jadwal tidak ditemukan.", Toast.LENGTH_SHORT).show()
+//        }
+        setupChatRoom()
+        setupRecyclerView()
+    }
 
 
+    private fun setupChatRoom() {
         binding.sendButton.setOnClickListener {
-            val userName = firebaseUser?.displayName ?: "Anonymous" // Default name if not available
-            val userPhotoUrl = firebaseUser?.photoUrl?.toString() ?: "" // Empty string if not available
-            val friendlyMessage = Message(
-                binding.messageEditText.text.toString(),
-                userName,
-                userPhotoUrl,
-                Date().time
-            )
-            messagesRef.push().setValue(friendlyMessage) { error, _ ->
-                if (error != null) {
-                    Toast.makeText(requireContext(), getString(R.string.send_error) + error.message, Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(requireContext(), getString(R.string.send_success), Toast.LENGTH_SHORT).show()
-                }
-            }
+            fetchUsernameAndSendMessage()
+        }
+    }
+    private fun sendMessage(username: String) {
+        val userPhotoUrl = auth.currentUser?.photoUrl?.toString() ?: ""
+        val messageText = binding.messageEditText.text.toString()
+        if (messageText.isNotEmpty()) {
+            val message = Message(messageText, username, userPhotoUrl, Date().time)
+            val messagesRef = database.child("chatRooms").child(jadwalId ?: "").child("messages")
+            messagesRef.push().setValue(message)
             binding.messageEditText.setText("")
         }
+    }
+
+    private fun fetchUsernameAndSendMessage() {
+        val userId = auth.currentUser?.uid
+        if (userId != null) {
+            database.child("users").child(userId).addListenerForSingleValueEvent(object :
+                ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val username = snapshot.child("username").value as? String ?: "Anonymous"
+                    sendMessage(username)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(context, "Failed to load username: ${error.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+    }
+
+    private fun setupRecyclerView() {
         val manager = LinearLayoutManager(requireContext())
         manager.stackFromEnd = true
         binding.messageRecyclerView.layoutManager = manager
 
+        val messagesRef = database.child("chatRooms").child(jadwalId ?: "").child("messages")
         val options = FirebaseRecyclerOptions.Builder<Message>()
             .setQuery(messagesRef, Message::class.java)
             .build()
-        adapter = ChatAdapter(options, firebaseUser?.displayName)
-        binding.messageRecyclerView.adapter = adapter
-    }
 
-    companion object {
-        const val MESSAGES_CHILD = "messages"
+        adapter = ChatAdapter(options, auth.currentUser?.displayName)
+        binding.messageRecyclerView.adapter = adapter
     }
     override fun onStart() {
         super.onStart()

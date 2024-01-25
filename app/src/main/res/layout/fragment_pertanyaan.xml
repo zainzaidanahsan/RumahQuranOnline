@@ -1,49 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:padding="16dp">
+    android:fillViewport="true">
 
-    <!-- Header atau toolbar area -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/headerArea"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true">
-
-        <!-- Tempatkan elemen header seperti ikon back atau judul di sini -->
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <!-- Container untuk teks ayat dan nomor -->
     <RelativeLayout
-        android:id="@+id/ayatContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/headerArea"
-        android:layout_marginTop="24dp">
+        android:background="#FFFFFF"
+        android:padding="16dp">
 
-        <!-- Nomor ayat -->
-        <TextView
-            android:id="@+id/tvAyatNumber"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/ayatContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="7."
-            android:textSize="24sp"
-            android:textColor="#000000" />
+            android:layout_marginTop="24dp">
 
-        <!-- Teks ayat -->
-        <TextView
-            android:id="@+id/tvAyatText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/tvAyatNumber"
-            android:text="صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ..."
-            android:textSize="24sp"
-            android:textColor="#000000"
-            android:textAlignment="viewEnd" />
-    </RelativeLayout>
+            <!-- Nomor ayat -->
+            <TextView
+                android:id="@+id/tvAyatNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/majalla"
+                android:text="7."
+                android:textSize="24sp"
+                android:layout_margin="5dp"
+                android:layout_marginEnd="5dp"
+                android:textColor="#000000" />
+
+            <!-- Teks ayat -->
+            <TextView
+                android:id="@+id/tvAyatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/tvAyatNumber"
+                android:text="صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ..."
+                android:fontFamily="@font/majalla"
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:textAlignment="viewEnd" />
+
+            <!-- Teks Latin -->
+            <TextView
+                android:id="@+id/tvAyatLatin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvAyatText"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="Latin text here"
+                android:textSize="18sp"
+                android:textColor="#000000" />
+        </RelativeLayout>
 
     <!-- Pilihan jawaban -->
     <RadioGroup
@@ -61,6 +69,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/background_jawaban"
             android:text="فَلَا الْمُغْضُوبِ عَلَيْهِمْ"
+            android:fontFamily="@font/simpfxo"
             android:textColor="@color/black"
             android:padding="16dp" />
         <RadioButton
@@ -69,6 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@drawable/background_jawaban"
+            android:fontFamily="@font/simpfxo"
             android:text="فَلَا الْمُغْضُوبِ عَلَيْهِمْ"
             android:textColor="@color/black"
             android:padding="16dp" />
@@ -79,15 +89,14 @@
             android:background="@drawable/background_jawaban"
             android:text="فَلَا الْمُغْضُوبِ عَلَيْهِمْ"
             android:textColor="@color/black"
+            android:fontFamily="@font/simpfxo"
             android:padding="16dp" />
 
-        <!-- Repeat RadioButton for other options (B, C, D) with different texts -->
 
     </RadioGroup>
 
-    <!-- Tombol 'Berikutnya' -->
     <Button
-        android:id="@+id/btnNext"
+        android:id="@+id/btnJawab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/radioJawaban"
@@ -96,5 +105,6 @@
         android:text="Jawab"
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
+    </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>

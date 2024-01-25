@@ -1,5 +1,6 @@
 package com.zain.rumahquranonline.ui.home
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -53,8 +54,11 @@ class Home : Fragment() {
         binding.cvMenu3.setOnClickListener {
             findNavController().navigate(R.id.action_home2_to_setoranHafalan)
         }
-        binding.settings.setOnClickListener(){
-            findNavController().navigate(R.id.action_home2_to_fragmentSettings)
+        binding.cvDoa.setOnClickListener {
+            findNavController().navigate(R.id.action_home2_to_doa)
+        }
+        binding.cvBeritaIslami.setOnClickListener {
+            showDevelopmentDialog()
         }
     }
 
@@ -69,10 +73,21 @@ class Home : Fragment() {
         super.onResume()
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                findNavController().popBackStack(R.id.loginFirebase, false)
+                findNavController().popBackStack(R.id.pilihRole, false)
                 activity?.finish()
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
+
+    private fun showDevelopmentDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Masih Dalam Pengembangan")
+            .setMessage("Maaf, fitur berita islam saat ini masih dalam tahap pengembangan.")
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
     }
 }

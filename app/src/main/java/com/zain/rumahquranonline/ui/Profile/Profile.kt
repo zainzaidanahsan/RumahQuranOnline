@@ -1,12 +1,12 @@
 package com.zain.rumahquranonline.ui.Profile
 
-import android.app.AlertDialog
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -15,8 +15,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.zain.rumahquranonline.R
-import com.zain.rumahquranonline.constan.MyApplication
-import com.zain.rumahquranonline.databinding.FragmentLoginFirebaseBinding
+
 import com.zain.rumahquranonline.databinding.FragmentProfileBinding
 
 class Profile : Fragment() {
@@ -54,7 +53,7 @@ class Profile : Fragment() {
 
     private fun signOut(){
         auth.signOut()
-        findNavController().navigate(R.id.action_profile_to_loginFirebase)
+        findNavController().navigate(R.id.action_profile_to_pilihRole)
     }
 
     private fun loadUserInfo(){
@@ -83,5 +82,15 @@ class Profile : Fragment() {
                 override fun onCancelled(error: DatabaseError) {
                 }
             })
+    }
+    override fun onResume() {
+        super.onResume()
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack(R.id.pilihRole, false)
+                activity?.finish()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 }

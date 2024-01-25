@@ -8,10 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zain.rumahquranonline.R
 import com.zain.rumahquranonline.data.Jadwal
 
-class JadwalAdapter(private val jadwalList: List<Jadwal>): RecyclerView.Adapter<JadwalAdapter.ViewHolder>() {
+class JadwalAdapter(
+    private val jadwalList: List<Jadwal>,
+    private val onClick: (Jadwal) -> Unit
+): RecyclerView.Adapter<JadwalAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textViewTanggal: TextView = view.findViewById(R.id.txtTanggal)
         val textViewSesi: TextView = view.findViewById(R.id.txtSesi)
+        val textNamaUstadz :TextView = view.findViewById(R.id.txtUst)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,6 +29,11 @@ class JadwalAdapter(private val jadwalList: List<Jadwal>): RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val jadwal = jadwalList[position]
+        holder.itemView.setOnClickListener {
+            onClick(jadwal)
+        }
         holder.textViewTanggal.text = jadwal.tanggal
-        holder.textViewSesi.text = jadwal.sesi    }
+        holder.textViewSesi.text = jadwal.sesi
+        holder.textNamaUstadz.text = jadwal.namaUstadz
+    }
 }

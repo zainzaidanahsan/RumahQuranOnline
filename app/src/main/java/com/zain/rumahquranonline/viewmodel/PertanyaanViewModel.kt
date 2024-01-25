@@ -1,5 +1,6 @@
 package com.zain.rumahquranonline.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,30 +23,49 @@ class PertanyaanViewModel : ViewModel() {
             val response = try {
                 RetrofitClient.api.getAyat(suratNumber).awaitResponse()
             } catch (e: Exception) {
+                Log.e("PertanyaanViewModel", "Error fetching data: ${e.message}")
                 e.printStackTrace()
                 return@launch
             }
-            if (response.isSuccessful) {
-                response.body()?.data?.let { data ->
-                    _ayatResponse.value = response.body()
+            if (response.isSuccessful && response.body() != null) {
+                val data = response.body()!!.data
+                if (data != null && data.ayat != null && data.ayat.isNotEmpty()) {
                     prepareQuestionAndAnswers(data)
+                } else {
+                    Log.e("PertanyaanViewModel", "Data ayat kosong atau null")
                 }
             } else {
-                // TODO: Handle the case where the response is not successful
+                Log.e("PertanyaanViewModel", "Response not successful or body is null")
             }
         }
     }
     private fun prepareQuestionAndAnswers(data: Data) {
         val ayatList = data.ayat?.filterNotNull()
-        if (!ayatList.isNullOrEmpty() && ayatList.size > 1) {
-            val questionIndex = ayatList.indices.random()
+        if (!ayatList.isNullOrEmpty()) {
+            // Pilih ayat secara acak sebagai pertanyaan, kecuali ayat terakhir
+            val questionIndex = (0 until ayatList.size - 1).random()
             val questionAyat = ayatList[questionIndex]
             currentAyat.value = questionAyat
+            // Tetapkan jawaban yang benar
             correctAnswer = ayatList.getOrNull(questionIndex + 1)?.teksArab
-            val options = (ayatList - questionAyat).shuffled().take(2).mapNotNull { it.teksArab }.toMutableList()
+
+            val options = mutableListOf<String>()
             correctAnswer?.let { options.add(it) }
+
+            // Tambahkan jawaban yang salah dan unik
+            while (options.size < 3) {
+                val randomIndex = (ayatList.indices - questionIndex - 1).random() // Hindari indeks pertanyaan dan jawaban yang benar
+                val randomAyat = ayatList[randomIndex].teksArab!!
+                if (randomAyat !in options) {
+                    options.add(randomAyat)
+                }
+            }
+
             options.shuffle()
             answerOptions.value = options
+        }else {
+            // Log atau tampilkan pesan kesalahan jika tidak ada ayat
+            Log.e("PertanyaanViewModel", "Tidak ada ayat yang tersedia")
         }
     }
 

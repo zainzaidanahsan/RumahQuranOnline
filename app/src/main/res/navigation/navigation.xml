@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_splashScreen_to_homeAdmin"
             app:destination="@id/homeAdmin" />
+        <action
+            android:id="@+id/action_splashScreen_to_pilihRole"
+            app:destination="@id/pilihRole" />
+        <action
+            android:id="@+id/action_splashScreen_to_home2"
+            app:destination="@id/home2" />
     </fragment>
     <fragment
         android:id="@+id/login"
@@ -72,6 +78,9 @@
         <action
             android:id="@+id/action_home2_to_pertanyaan"
             app:destination="@id/pertanyaan" />
+        <action
+            android:id="@+id/action_home2_to_doa"
+            app:destination="@id/doa" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -84,6 +93,9 @@
         <action
             android:id="@+id/action_profile_to_editProfile"
             app:destination="@id/editProfile" />
+        <action
+            android:id="@+id/action_profile_to_pilihRole"
+            app:destination="@id/pilihRole" />
     </fragment>
     <fragment
         android:id="@+id/sambungAyat"
@@ -150,6 +162,9 @@
         <action
             android:id="@+id/action_homeAdmin_to_createSchedule"
             app:destination="@id/createSchedule" />
+        <action
+            android:id="@+id/action_homeAdmin_to_profile"
+            app:destination="@id/profile" />
     </fragment>
     <fragment
         android:id="@+id/materiAdmin"
@@ -222,6 +237,9 @@
         <action
             android:id="@+id/action_fragmentSettings_to_profile"
             app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_fragmentSettings_to_about"
+            app:destination="@id/about" />
     </fragment>
     <fragment
         android:id="@+id/editProfile"
@@ -246,4 +264,34 @@
         android:id="@+id/pertanyaan"
         android:name="com.zain.rumahquranonline.ui.sambungayat.Pertanyaan"
         android:label="Pertanyaan" />
+    <fragment
+        android:id="@+id/doa"
+        android:name="com.zain.rumahquranonline.ui.DoaDoa.Doa"
+        android:label="fragment_doa"
+        tools:layout="@layout/fragment_doa" >
+        <action
+            android:id="@+id/action_doa_to_detailDoa"
+            app:destination="@id/detailDoa" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailDoa"
+        android:name="com.zain.rumahquranonline.ui.DoaDoa.DetailDoa"
+        android:label="fragment_detail_doa"
+        tools:layout="@layout/fragment_detail_doa" />
+    <fragment
+        android:id="@+id/pilihRole"
+        android:name="com.zain.rumahquranonline.ui.pilihRole.PilihRole"
+        android:label="PilihRole" >
+        <action
+            android:id="@+id/action_pilihRole_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_pilihRole_to_register"
+            app:destination="@id/register" />
+    </fragment>
+    <fragment
+        android:id="@+id/about"
+        android:name="com.zain.rumahquranonline.ui.about.About"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>

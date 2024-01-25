@@ -57,6 +57,9 @@ class HomeAdmin : Fragment() {
         binding.cvMenu3.setOnClickListener {
             findNavController().navigate(R.id.action_homeAdmin_to_createSchedule)
         }
+        binding.profile.setOnClickListener {
+            findNavController().navigate(R.id.action_homeAdmin_to_profile)
+        }
 
     }
 
@@ -71,7 +74,7 @@ class HomeAdmin : Fragment() {
         super.onResume()
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                findNavController().popBackStack(R.id.loginFirebase, false)
+                findNavController().popBackStack(R.id.pilihRole, false)
                 activity?.finish()
             }
         }

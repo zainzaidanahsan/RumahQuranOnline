@@ -92,6 +92,11 @@ class EditProfile : Fragment() {
     private fun uploadImage() {
         progressDialog.setMessage("Mengupload Foto")
         progressDialog.show()
+        if (imageUri == null) {
+            progressDialog.dismiss()
+            Toast.makeText(requireContext(), "Gambar tidak valid", Toast.LENGTH_SHORT).show()
+            return
+        }
         val filePathName = "PhotoImage/"+auth.uid
         val ref = FirebaseStorage.getInstance().getReference(filePathName)
         ref.putFile(imageUri!!)
@@ -155,17 +160,29 @@ class EditProfile : Fragment() {
         galleryActivityResultLauncher.launch(intent)
     }
 
+//    private fun bukaKamera() {
+//        val values = ContentValues()
+//        values.put(MediaStore.Images.Media.TITLE, "Temp_Tittle")
+//        values.put(MediaStore.Images.Media.TITLE, "Temp_Description")
+//        val imageUri: Uri? = requireActivity().contentResolver.insert(
+//            MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values
+//        )
+//        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
+//        cameraActivityResultLauncher.launch(intent)
+//    }
     private fun bukaKamera() {
         val values = ContentValues()
         values.put(MediaStore.Images.Media.TITLE, "Temp_Tittle")
-        values.put(MediaStore.Images.Media.TITLE, "Temp_Description")
-        val imageUri: Uri? = requireActivity().contentResolver.insert(
+        values.put(MediaStore.Images.Media.DESCRIPTION, "Temp_Description")
+        imageUri = requireActivity().contentResolver.insert(
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values
         )
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
         cameraActivityResultLauncher.launch(intent)
     }
+
 
     private fun loadUserInfo(){
         val ref = FirebaseDatabase.getInstance().getReference("Users")
@@ -197,10 +214,10 @@ class EditProfile : Fragment() {
     private val cameraActivityResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
         ActivityResultCallback {
-            if (it.resultCode == Activity.RESULT_OK){
-                val data = it.data
-                imageUri = data?.data
-            }else{
+            if (it.resultCode == Activity.RESULT_OK) {
+                // imageUri sudah berisi URI dari gambar yang diambil
+                binding.circleImageView.setImageURI(imageUri)
+            } else {
                 Toast.makeText(requireContext(),"Cancelled", Toast.LENGTH_SHORT).show()
             }
         }

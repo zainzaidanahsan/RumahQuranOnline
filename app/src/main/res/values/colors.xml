@@ -8,4 +8,5 @@
     <color name="red">#B31312</color>
     <color name="blue">#3652AD</color>
     <color name="grey">#E7E7FF</color>
+    <color name="backgroundSplashScreen">#0F1F2C</color>
 </resources>

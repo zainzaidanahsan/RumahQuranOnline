@@ -18,6 +18,7 @@
     <string name="kirim_pesan">Kirim Pesan</string>
     <string name="nama_user">Nama User</string>
     <string name="email_user">Email@user.com</string>
+    <string name="spinner_hint">Tentukan Lokasi</string>
 
 
     <string-array name="jam_mengajar_array">

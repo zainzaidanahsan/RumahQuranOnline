@@ -62,7 +62,7 @@ data class Data(
 	val audioFull: AudioFull? = null,
 
 	@field:SerializedName("suratSebelumnya")
-	val suratSebelumnya: Boolean? = null,
+	val suratSebelumnya: SuratSebelumnya? = null,
 
 	@field:SerializedName("tempatTurun")
 	val tempatTurun: String? = null,
@@ -117,4 +117,18 @@ data class AudioFull(
 
 	@field:SerializedName("05")
 	val jsonMember05: String? = null
+)
+
+data class SuratSebelumnya(
+	@field:SerializedName("nomor")
+	val nomor: Int? = null,
+
+	@field:SerializedName("nama")
+	val nama: String? = null,
+
+	@field:SerializedName("namaLatin")
+	val namaLatin: String? = null,
+
+	@field:SerializedName("jumlahAyat")
+	val jumlahAyat: Int? = null
 )

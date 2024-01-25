@@ -43,16 +43,15 @@ class SetoranHafalan : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.rvJadwal)
         jadwalList = mutableListOf()
-        adapter = JadwalAdapter(jadwalList)
+        adapter = JadwalAdapter(jadwalList) { jadwal ->
+            onJadwalClicked(jadwal)
+        }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
         loadJadwal()
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
-        }
-        binding.button.setOnClickListener {
-            findNavController().navigate(R.id.action_setoranHafalan_to_chat)
         }
     }
 
@@ -73,6 +72,12 @@ class SetoranHafalan : Fragment() {
             }
 
         })
+    }
+    private fun onJadwalClicked(jadwal: Jadwal) {
+        val bundle = Bundle()
+        bundle.putString("jadwalId", jadwal.id)
+
+        findNavController().navigate(R.id.action_setoranHafalan_to_chat, bundle)
     }
 
 }

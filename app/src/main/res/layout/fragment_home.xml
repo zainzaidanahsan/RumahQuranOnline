@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,34 +7,44 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.Home">
 
-    <ImageView
-        android:id="@+id/settings"
-        android:src="@drawable/baseline_settings_24"
-        android:layout_centerHorizontal="true"
-        android:layout_toEndOf="@id/homeClockTextView"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="35dp"
-        android:layout_width="38dp"
-        android:layout_height="38dp"/>
+<!--    <ImageView-->
+<!--        android:id="@+id/settings"-->
+<!--        android:layout_width="38dp"-->
+<!--        android:layout_height="38dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_toEndOf="@id/homeClockTextView"-->
+<!--        android:src="@drawable/baseline_settings_24"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/homeClockTextView"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.84"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/homeClockTextView"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.592" />-->
 
     <ImageView
         android:id="@+id/bg_masjid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/masjidbg" />
+        android:src="@drawable/masjidbg"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="36dp" />
 
     <TextView
         android:id="@+id/homeClockTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_bold"
-        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
+        android:fontFamily="@font/inter_bold"
         android:lineSpacingExtra="-38sp"
         android:text="12:00"
         android:textColor="@color/white"
-        android:textSize="48sp" />
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/cv_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/hijriDateTextView"
@@ -44,17 +54,18 @@
         android:text="2 Ramadhan 1445H"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:layout_marginTop="35dp"
-        android:layout_marginStart="20dp" />
+        app:layout_constraintBottom_toTopOf="@+id/homeClockTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:id="@+id/cv_bg"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="300dp"
-        app:cardCornerRadius="20dp">
-
+        android:layout_marginTop="300dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -144,9 +155,70 @@
                 android:text="Setoran Hafalan"
                 android:textColor="@color/black" />
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_doa"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/tv_sambungayat"
+                android:backgroundTint="@color/green_light"
+                app:cardCornerRadius="8dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/doa"
+                    />
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/tv_doa"
+                android:layout_marginTop="5dp"
+                android:layout_width="57dp"
+                android:layout_height="32dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_regular"
+                android:textAlignment="center"
+                android:layout_below="@+id/cv_doa"
+                android:text="Doa-Doa"
+                android:textColor="@color/black" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_beritaIslami"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/tv_sambungayat"
+                android:layout_toEndOf="@+id/cv_doa"
+                android:backgroundTint="@color/green_light"
+                app:cardCornerRadius="8dp" >
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/news"
+                    />
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/tv_berita"
+                android:layout_marginTop="5dp"
+                android:layout_width="57dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="36dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_regular"
+                android:textAlignment="center"
+                android:layout_below="@+id/cv_doa"
+                android:layout_toEndOf="@+id/tv_doa"
+                android:text="Berita Islam"
+                android:textColor="@color/black" />
+
+
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+    </ScrollView>
 
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

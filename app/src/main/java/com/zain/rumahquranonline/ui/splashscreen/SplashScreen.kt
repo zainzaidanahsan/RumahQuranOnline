@@ -32,42 +32,38 @@ class SplashScreen : Fragment() {
         Handler(Looper.getMainLooper()).postDelayed({
             val firebaseUser = firebaseAuth.currentUser
             if (firebaseUser != null){
-                val isAdmin = checkIfUserIsAdmin(firebaseUser.uid)
-
-                if (isAdmin) {
-                    findNavController().navigate(R.id.action_splashScreen_to_homeAdmin)
-                } else {
-                    navigateToNextFragment()
+                checkUserRole(firebaseUser.uid) { isAdmin ->
+                    if (isAdmin) {
+                        findNavController().navigate(R.id.action_splashScreen_to_homeAdmin)
+                    } else {
+                        findNavController().navigate(R.id.action_splashScreen_to_home2)
+                    }
                 }
             }else{
                 navigateToNextFragment()
             }
         }, splashDuration)
-
-
     }
-
     private fun navigateToNextFragment() {
-        findNavController().navigate(R.id.action_splashScreen_to_loginFirebase)
+        findNavController().navigate(R.id.action_splashScreen_to_pilihRole)
     }
 
-    private fun checkIfUserIsAdmin(uid: String): Boolean {
+    private fun checkUserRole(uid: String, callback: (Boolean) -> Unit) {
         val usersRef = FirebaseDatabase.getInstance().getReference("Users").child(uid)
-
-        var isAdmin = false
         usersRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     val userType = dataSnapshot.child("userType").value as String?
-                    isAdmin = userType == "admin"
+                    callback(userType == "admin")
+                } else {
+                    callback(false)
                 }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 // Handle potential errors here
+                callback(false)
             }
         })
-
-        return isAdmin
     }
 }

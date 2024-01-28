@@ -1,6 +1,5 @@
 package com.zain.rumahquranonline.ui.materi
 
-import android.app.ActionBar
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -16,14 +15,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.zain.rumahquranonline.R
 import com.zain.rumahquranonline.adapter.HadistAdapter
-import com.zain.rumahquranonline.data.DataHadist
 import com.zain.rumahquranonline.databinding.FragmentMateriBinding
-import com.zain.rumahquranonline.model.Client
-import com.zain.rumahquranonline.model.HadistResponseItem
+import com.zain.rumahquranonline.model.modelHadist.Client
+import com.zain.rumahquranonline.model.modelHadist.HadistResponseItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
 
 
 class Materi : Fragment() {

@@ -1,6 +1,5 @@
-package com.zain.rumahquranonline.model
+package com.zain.rumahquranonline.model.modelHadist
 
-import com.zain.rumahquranonline.data.DataHadist
 import com.zain.rumahquranonline.data.NumberHadistItem
 import retrofit2.Call
 import retrofit2.http.GET

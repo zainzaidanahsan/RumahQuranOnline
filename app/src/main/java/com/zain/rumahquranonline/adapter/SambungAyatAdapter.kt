@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.zain.rumahquranonline.R
-import com.zain.rumahquranonline.data.JuzSambungAyat
 
 class SambungAyatAdapter(private val mList: List<JuzSambungAyat>):
     RecyclerView.Adapter<SambungAyatAdapter.ViewHolder>() {

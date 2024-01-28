@@ -1,4 +1,4 @@
-package com.zain.rumahquranonline.model
+package com.zain.rumahquranonline.model.modelHadist
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

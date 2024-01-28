@@ -5,9 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.zain.rumahquranonline.R
 import com.zain.rumahquranonline.databinding.FragmentDetailHadistBinding
-import com.zain.rumahquranonline.model.DetailHadistResponse
 
 
 class DetailHadist : Fragment() {

@@ -8,7 +8,7 @@ import com.zain.rumahquranonline.R
 
 
 import android.view.LayoutInflater
-import com.zain.rumahquranonline.model.HadistResponseItem
+import com.zain.rumahquranonline.model.modelHadist.HadistResponseItem
 
 class HadistAdapter (private val itemClickListener: (HadistResponseItem) -> Unit) : RecyclerView.Adapter<HadistAdapter.HadisViewHolder>() {
 

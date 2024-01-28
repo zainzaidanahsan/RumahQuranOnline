@@ -8,9 +8,7 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.zain.rumahquranonline.R
-import com.zain.rumahquranonline.data.NumberHadistItem
-import com.zain.rumahquranonline.model.DetailHadistResponse
-import com.zain.rumahquranonline.ui.materi.DetailHadist
+import com.zain.rumahquranonline.model.modelHadist.DetailHadistResponse
 
 class NomorHadistAdapter(private val nomorHadistList: List<Int>,
                          private val hadistList: List<DetailHadistResponse>) :

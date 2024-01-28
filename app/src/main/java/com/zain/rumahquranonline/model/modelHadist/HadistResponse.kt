@@ -1,4 +1,4 @@
-package com.zain.rumahquranonline.model
+package com.zain.rumahquranonline.model.modelHadist
 
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable

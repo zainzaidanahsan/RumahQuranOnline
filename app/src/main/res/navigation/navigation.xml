@@ -240,6 +240,9 @@
         <action
             android:id="@+id/action_fragmentSettings_to_about"
             app:destination="@id/about" />
+        <action
+            android:id="@+id/action_fragmentSettings_to_notification2"
+            app:destination="@id/notification2" />
     </fragment>
     <fragment
         android:id="@+id/editProfile"
@@ -294,4 +297,9 @@
         android:name="com.zain.rumahquranonline.ui.about.About"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/notification2"
+        android:name="com.zain.rumahquranonline.ui.notification.Notification"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
 </navigation>

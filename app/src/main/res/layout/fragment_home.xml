@@ -60,6 +60,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/notification"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/baseline_notifications_24"
+        app:layout_constraintBottom_toTopOf="@+id/homeClockTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.924"
+        app:layout_constraintStart_toEndOf="@+id/hijriDateTextView"
+        app:layout_constraintTop_toTopOf="@+id/bg_masjid" />
+
     <ScrollView
         android:id="@+id/cv_bg"
         android:background="@color/white"
